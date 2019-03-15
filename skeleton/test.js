@@ -24,6 +24,8 @@ test("addTodo returns an object with description, id and done", t => {
   t.end();
 });
 
+// obsolete tests which broke once we added in other features
+
 // test("addTodo returns an object with text added", t => {
 //   const actual = logic.addTodo([], "tester");
 //   const expected = [
@@ -86,6 +88,7 @@ test("addTodo add object to existing array(of objects)", t => {
 });
 
 // // test to see if the id function is working
+// - this became broken once we moved on with the addTodo function
 
 // test("addTodo should increment id number", t => {
 //   const actual = logic.addTodo([
@@ -118,6 +121,8 @@ test("deleteTodo returns an array", t => {
 
   t.end();
 });
+
+// also an obsolete tests
 
 // test("deleteTodo takes a number", t => {
 //   const actual = logic.deleteTodo([], 0);
@@ -170,43 +175,60 @@ test("markTodo returns an array", t => {
 test("markTodo returns array changes the content, but NOT length", t => {
   const actual = logic.markTodo(testArray, 0);
   const expected = testArray;
-  t.notDeepEqual(actual, expected, "markTodo should return an array with changed content, same length");
-  t.equal(actual.length, expected.length, "markTodo has not changed the length")
+  t.notDeepEqual(
+    actual,
+    expected,
+    "markTodo should return an array with changed content, same length"
+  );
+  t.equal(
+    actual.length,
+    expected.length,
+    "markTodo has not changed the length"
+  );
   t.end();
 });
 
 test("markTodo returns array with specified object, done value toggled", t => {
   const actual = logic.markTodo(testArray, 0);
-  const expected = [{
-    id: 0,
-    description: "tester",
-    done: true
-  },
-  {
-    id: 1,
-    description: "do some code",
-    done: false
-  }
-];
+  const expected = [
+    {
+      id: 0,
+      description: "tester",
+      done: true
+    },
+    {
+      id: 1,
+      description: "do some code",
+      done: false
+    }
+  ];
   t.deepEqual(actual, expected, "markTodo should feature a toggled done");
 
   t.end();
 });
 
 test("markTodo returns array with toggled done, toggled back to false", t => {
-  const actual = logic.markTodo([{
-    id: 0,
-    description: "tester",
-    done: true
-  },
-  {
-    id: 1,
-    description: "do some code",
-    done: false
-  }
-], 0);
+  const actual = logic.markTodo(
+    [
+      {
+        id: 0,
+        description: "tester",
+        done: true
+      },
+      {
+        id: 1,
+        description: "do some code",
+        done: false
+      }
+    ],
+    0
+  );
   const expected = testArray;
-  t.deepEqual(actual, expected, "markTodo should feature a toggled done, toggled back to false");
+  t.deepEqual(
+    actual,
+    expected,
+    "markTodo should feature a toggled done, toggled back to false"
+  );
 
   t.end();
 });

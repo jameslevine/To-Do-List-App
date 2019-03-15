@@ -70,6 +70,8 @@
     // markTodoButtonNode.classList.add("blue");
     // markTodoButtonNode.setAttribute("type", "checkbox");
     markTodoButtonNode.addEventListener("click", function(event) {
+      // Left here to show our struggle with trying to style within event listener
+
       // console.log(event);
       // console.log(markTodoButtonNode.classList);
       // if (markTodoButtonNode.classList[0] === "blue") {
